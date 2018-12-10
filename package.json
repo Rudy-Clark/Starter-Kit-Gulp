@@ -1,0 +1,14 @@
+{
+  "name": "gulp-myconfigs",
+  "version": "1.0.0",
+  "description": "My configs for gulpfile.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gulp"
+  ],
+  "author": "Rudy-Clark",
+  "license": "MIT"
+}
