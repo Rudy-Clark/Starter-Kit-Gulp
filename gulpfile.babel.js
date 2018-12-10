@@ -20,7 +20,7 @@ import webpackConfig from './webpack.config.babel.js'
 
 const projectName = 'Gulp-configs'
 const { reload } = BrowserSync
-const browsers = [
+export const browsers = [
     'last 4 version',
     'not ie <= 11'
 ]
@@ -135,6 +135,7 @@ Task('scripts', () => {
                     colors: true
                 }))
                 resolve(stats)
+                reload({ stream: true })
             })
         } catch (error) {
             console.log(error)
@@ -147,30 +148,17 @@ Task('clean', () => {
     return del('./build')
 })
 
-Task('build', gulp.parallel('clean', 'images', 'styles', 'scripts'))
+Task('build', gulp.series('clean', gulp.parallel('images', 'styles', 'scripts', 'pug', 'fonts')))
 
-Task('watch', gulp.series('build', () => {
-    const pathToImages = './src/images/'
+const pathToImages = './src/images/'
+Watch(pathToImages + '**/*.jpg', gulp.series('jpg'))
+Watch(pathToImages + '**/*.png', gulp.series('png'))
+Watch(pathToImages + '**/*.svg', gulp.series('svg'))
+Watch(pathToImages + '**/*.gif', gulp.series('gif'))
 
-    Watch(pathToImages + '**/*.jpg', gulp.series('jpg'))
-    Watch(pathToImages + '**/*.png', gulp.series('png'))
-    Watch(pathToImages + '**/*.svg', gulp.series('svg'))
-    Watch(pathToImages + '**/*.gif', gulp.series('gif'))
+Watch('./src/fonts/**/*.+(ttf|woff|woff2|svg|eot)', gulp.series('fonts'))
+Watch('./src/styles/**/*.scss', gulp.series('styles'))
+Watch('./src/js/**/*.js', gulp.series('scripts'))
+Watch('./src/pug/**/*.pug', gulp.series('pug'))
 
-    Watch('./src/fonts/**/*.+(ttf|woff|woff2|svg|eot)', gulp.series('fonts'))
-    Watch('./src/styles/**/*.scss', gulp.series('styles'))
-    Watch('./src/js/**/*.js', gulp.series('scripts'))
-    Watch('./src/pug/**/*.pug', gulp.series('pug'))
-}))
-
-Task('default', gulp.series('watch', 'BrowserSync'))
-// // watchers for build task
-// watch(PATH.src.pug, Html);
-// watch(PATH.src.js, Babel);
-// watch(PATH.src.sass, Sass);
-// watch(PATH.src.img, Image);
-// watch(PATH.src.font, Fonts);
-
-// exports.default = series(Clean, parallel(Babel, Sass, Html, Image, Fonts), Serve)
-// exports.serve = Serve
-// exports.clean = Clean
+Task('default', gulp.series('build', 'BrowserSync'))
