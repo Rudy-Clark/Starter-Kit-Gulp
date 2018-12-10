@@ -20,16 +20,19 @@
     "eslint-plugin-standard": "^4.0.0",
     "jpegtran-bin": "^4.0.0",
     "optipng-bin": "^5.1.0",
+    "precss": "^4.0.0",
     "stylelint": "^9.9.0",
     "stylelint-config-recommended-scss": "^3.2.0",
     "stylelint-scss": "^3.4.1"
   },
   "dependencies": {
+    "autoprefixer": "^9.4.2",
     "babel-core": "^6.26.3",
     "babel-loader": "7.0.0",
     "babel-preset-env": "^1.7.0",
     "browser-sync": "^2.26.3",
     "core-js": "^2.6.0",
+    "cssnano": "^4.1.7",
     "del": "^3.0.0",
     "gulp": "^4.0.0",
     "gulp-cached": "^1.1.1",
@@ -40,6 +43,7 @@
     "gulp-pug": "^4.0.1",
     "gulp-rename": "^1.4.0",
     "gulp-svgo": "^1.5.4",
+    "postcss-reporter": "^6.0.0",
     "postcss-scss": "^2.0.0",
     "scriptjs": "^2.5.9",
     "webpack": "^2.7.0"
