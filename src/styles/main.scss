@@ -1,0 +1,10 @@
+$maxWidth: 1020px;
+
+@media only screen and (max-width: $maxWidth){
+    body{
+        background: linear-gradient(white,black)
+    }
+}
+body{
+    background: radial-gradient(white 0%, black 100%)
+}
