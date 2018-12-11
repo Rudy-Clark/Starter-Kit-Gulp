@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "gulp", "starter-kit", "configs"
+    "gulp",
+    "starter-kit",
+    "configs"
   ],
   "author": "Rudy-Clark",
   "license": "MIT",
