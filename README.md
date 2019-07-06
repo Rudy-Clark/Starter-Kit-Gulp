@@ -4,23 +4,30 @@ gulp configs
 ```shell
 git clone https://github.com/Rudy-Clark/Starter-Kit-Gulp
 cd Starter-Kit-Gulp
-npm install
-```
-Commands 
+npm install 
+// or
+yarn
+``` install
 
-Clean, build, minimize and serving `localhost:8080`
+### Commands 
+Clean, build and serving `localhost:8080`
 ```shell
-gulp default 
+npm start
+// or
+yarn start
 ```
-or just
-```shell
-gulp
-```
+
 Build
 ```shell
-gulp build
+npm build
+// or
+yarn build
 ```
-Clean `./build` dir
-```shell
-gulp clean
+
+Build for production
+```bash
+npm build:prod
+// or
+yarn build:prod
 ```
+
