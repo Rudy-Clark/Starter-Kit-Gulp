@@ -4,7 +4,9 @@
   "description": "My configs for gulpfile.js",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "cross-env NODE_ENV=development gulp",
+    "build": "cross-env NODE_ENV=development gulp build",
+    "build:prod": "cross-env NODE_ENV=production gulp build"
   },
   "keywords": [
     "gulp",
@@ -27,6 +29,7 @@
     "stylelint-scss": "^3.4.1"
   },
   "dependencies": {
+    "@csstools/postcss-sass": "^4.0.0",
     "autoprefixer": "^9.4.2",
     "babel-core": "^6.26.3",
     "babel-loader": "7.0.0",
