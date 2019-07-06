@@ -6,10 +6,11 @@ git clone https://github.com/Rudy-Clark/Starter-Kit-Gulp
 cd Starter-Kit-Gulp
 npm install 
 // or
-yarn
-``` install
+yarn install
+``` 
 
 ### Commands 
+
 Clean, build and serving `localhost:8080`
 ```shell
 npm start
