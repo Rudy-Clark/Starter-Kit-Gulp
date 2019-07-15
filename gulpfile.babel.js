@@ -101,7 +101,7 @@ Task('pug', () => {
 })
 
 Task('styles', () => {
-  const from = './src/styles/**/*.scss'
+  const from = ['./src/styles/**/*.scss', '!./src/styles/**/_*.scss']
   const to = './build/styles/'
 
   const devProcess = [
