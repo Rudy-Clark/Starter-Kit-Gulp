@@ -13,7 +13,7 @@ import cache from 'gulp-cached'
 import changed from 'gulp-changed'
 import webpack from 'webpack'
 import rename from 'gulp-rename'
-import sass from '@csstools/postcss-sass'
+import sass from 'gulp-sass'
 import gIf from 'gulp-if'
 import { config } from 'dotenv'
 
@@ -101,27 +101,24 @@ Task('pug', () => {
 })
 
 Task('styles', () => {
-  const from = ['./src/styles/**/*.scss', '!./src/styles/**/_*.scss']
+  const from = './src/styles/**/*.scss'
   const to = './build/styles/'
 
   const devProcess = [
-    sass(),
     autoprefix(),
     postReporter({
       clearMessage: true,
       throwError: true })
   ]
   const prodProcess = [
-    sass(),
     autoprefix(),
     cssnano()
   ]
 
   return gulp.src(from, { sourcemaps: true })
-    .pipe(changed(to))
-    .pipe(cache('styles'))
+    .pipe(sass.sync({ outputStyle: isProd ? 'compressed' : 'expanded' }).on('error', sass.logError))
     .pipe(postcss(isProd ? prodProcess : devProcess, { syntax: postScss }))
-    .pipe(rename({ extname: '.css' }))
+    .pipe(rename({ suffix: isProd ? '.min' : null }))
     .pipe(gulp.dest(to, { sourcemaps: '.' }))
     .pipe(reload({ stream: true }))
 })
